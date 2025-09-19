@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mantra Academy - Results</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f6f9; }
+    h1 { color: #2c3e50; }
+    #resultBox { padding: 20px; background: #fff; border-radius: 10px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2); margin-bottom: 20px; }
+    p { font-size: 18px; margin: 8px 0; }
+    a { display: inline-block; padding: 10px 16px; background: #2c3e50;
+      color: #fff; border-radius: 8px; text-decoration: none; }
+    a:hover { background: #1a252f; }
+  </style>
+</head>
+<body>
+  <h1>Test Results</h1>
+  <div id="resultBox"></div>
+  <a href="mock.html">Take Test Again</a>
+
+  <script>
+    // Get data
+    let score       = JSON.parse(localStorage.getItem("score"));
+    let total       = JSON.parse(localStorage.getItem("total"));
+    let correct     = JSON.parse(localStorage.getItem("correct"));
+    let wrong       = JSON.parse(localStorage.getItem("wrong"));
+    let unattempted = JSON.parse(localStorage.getItem("unattempted"));
+
+    if (score === null) score = 0;
+
+    let percentage = total > 0 ? (score / total) * 100 : 0;
+
+    document.getElementById("resultBox").innerHTML = `
+      <p><b>Marks Secured:</b> ${score.toFixed(2)} / ${total}</p>
+      <p><b>Correct Answers:</b> ${correct}</p>
+      <p><b>Wrong Answers:</b> ${wrong}</p>
+      <p><b>Unattempted:</b> ${unattempted}</p>
+      <p><b>Percentage:</b> ${percentage.toFixed(2)}%</p>
+    `;
+  </script>
+</body>
+</html>

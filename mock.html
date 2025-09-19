@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Mantra Academy - UPSC Mock Test 2026</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f6f9; }
+    h1 { color: #2c3e50; }
+    #timer { font-size: 18px; font-weight: bold; color: red; margin-bottom: 20px; }
+    .question { margin: 15px 0; padding: 10px; background: #fff; border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .btn-submit { display: inline-block; padding: 12px 20px; margin-top: 20px;
+      background: #2c3e50; color: #fff; text-decoration: none; font-size: 16px;
+      border-radius: 8px; transition: background 0.3s; cursor: pointer; }
+    .btn-submit:hover { background: #1a252f; }
+    #message { margin-top: 20px; font-style: italic; color: green; display: none; }
+  </style>
+</head>
+<body>
+  <h1>Mantra Academy</h1>
+  <h2>UPSC 2026 Mock Test (50 Questions)</h2>
+  <div id="timer">Time Left: 60:00</div>
+
+  <form id="quizForm">
+    <div id="questions"></div>
+    <a href="result.html" id="submitLink" class="btn-submit">Submit Test</a>
+    <p id="message">Answers will be processed automatically</p>
+  </form>
+
+  <script>
+    // Sample UPSC-style questions
+    const baseQuestions = [
+      { q: "Which is India's first indigenous aircraft carrier commissioned in 2022?", options: ["INS Vikramaditya", "INS Vikrant", "INS Arihant", "INS Kolkata"], answer: 1 },
+      { q: "Exercise 'Garuda VII' was held between India and which country in 2022?", options: ["France", "Russia", "USA", "Japan"], answer: 0 },
+      { q: "Who founded the Indian National Congress in 1885?", options: ["Mahatma Gandhi", "Allan Octavian Hume", "Dadabhai Naoroji", "Gopal Krishna Gokhale"], answer: 1 },
+      { q: "James Webb Space Telescope is a collaboration of NASA, ESA and?", options: ["ISRO", "CSA (Canada)", "Roscosmos", "JAXA"], answer: 1 },
+      { q: "Operation 'Gagan Shakti' is associated with which branch of Indian Armed Forces?", options: ["Indian Army", "Indian Navy", "Indian Air Force", "DRDO"], answer: 2 },
+      { q: "Which country hosted Exercise 'Malabar 2023' involving India, USA, Japan, and Australia?", options: ["India", "Japan", "Australia", "USA"], answer: 2 },
+      { q: "Who is known as the Grand Old Man of India?", options: ["Dadabhai Naoroji", "Bal Gangadhar Tilak", "Gopal Krishna Gokhale", "Lala Lajpat Rai"], answer: 0 },
+      { q: "Chandrayaan-3 successfully landed on which part of the Moon in 2023?", options: ["North Pole", "South Pole", "Equator", "Far Side"], answer: 1 },
+      { q: "Which military exercise is conducted between India and Russia?", options: ["Indra", "Varuna", "Simbex", "Yudh Abhyas"], answer: 0 },
+      { q: "Who wrote the book 'Discovery of India'?", options: ["Mahatma Gandhi", "Jawaharlal Nehru", "Subhash Chandra Bose", "Rabindranath Tagore"], answer: 1 }
+    ];
+
+    // Make 50 questions by repeating pool
+    let questions = [];
+    while (questions.length < 50) { questions = questions.concat(baseQuestions); }
+    questions.length = 50;
+
+    // Render questions
+    const qContainer = document.getElementById("questions");
+    questions.forEach((q, i) => {
+      const div = document.createElement("div");
+      div.classList.add("question");
+      div.innerHTML = `
+        <p><b>Q${i+1}. ${q.q}</b></p>
+        ${q.options.map((opt, idx) => `
+          <label><input type="radio" name="q${i}" value="${idx}"> ${opt}</label><br>`).join("")}
+      `;
+      qContainer.appendChild(div);
+    });
+
+    // Timer
+    let time = 60 * 60; // 1 hour in seconds
+    const timerDiv = document.getElementById("timer");
+    function updateTimer() {
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
+      timerDiv.textContent = `Time Left: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+      time--;
+      if (time < 0) { submitTest(); }
+    }
+    setInterval(updateTimer, 1000);
+
+    // Submit handler
+    function submitTest() {
+      let score = 0, correct = 0, wrong = 0, unattempted = 0;
+
+      questions.forEach((q, i) => {
+        const selected = document.querySelector(`input[name="q${i}"]:checked`);
+        if (selected) {
+          if (parseInt(selected.value) === q.answer) {
+            score += 2;
+            correct++;
+          } else {
+            score -= (2/3); // -0.66
+            wrong++;
+          }
+        } else {
+          unattempted++;
+        }
+      });
+
+      // Save results
+      localStorage.setItem("score", JSON.stringify(score));
+      localStorage.setItem("total", JSON.stringify(questions.length * 2));
+      localStorage.setItem("correct", JSON.stringify(correct));
+      localStorage.setItem("wrong", JSON.stringify(wrong));
+      localStorage.setItem("unattempted", JSON.stringify(unattempted));
+
+      // Message and redirect
+      document.getElementById("message").style.display = "block";
+      setTimeout(() => { window.location.href = "result.html"; }, 1500);
+    }
+
+    document.getElementById("submitLink").addEventListener("click", function(e) {
+      e.preventDefault();
+      submitTest();
+    });
+  </script>
+</body>
+</html>
