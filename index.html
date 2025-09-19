@@ -30,16 +30,63 @@
   <script>
     // Sample UPSC-style questions
     const baseQuestions = [
-      { q: "Which is India's first indigenous aircraft carrier commissioned in 2022?", options: ["INS Vikramaditya", "INS Vikrant", "INS Arihant", "INS Kolkata"], answer: 1 },
-      { q: "Exercise 'Garuda VII' was held between India and which country in 2022?", options: ["France", "Russia", "USA", "Japan"], answer: 0 },
-      { q: "Who founded the Indian National Congress in 1885?", options: ["Mahatma Gandhi", "Allan Octavian Hume", "Dadabhai Naoroji", "Gopal Krishna Gokhale"], answer: 1 },
-      { q: "James Webb Space Telescope is a collaboration of NASA, ESA and?", options: ["ISRO", "CSA (Canada)", "Roscosmos", "JAXA"], answer: 1 },
-      { q: "Operation 'Gagan Shakti' is associated with which branch of Indian Armed Forces?", options: ["Indian Army", "Indian Navy", "Indian Air Force", "DRDO"], answer: 2 },
-      { q: "Which country hosted Exercise 'Malabar 2023' involving India, USA, Japan, and Australia?", options: ["India", "Japan", "Australia", "USA"], answer: 2 },
-      { q: "Who is known as the Grand Old Man of India?", options: ["Dadabhai Naoroji", "Bal Gangadhar Tilak", "Gopal Krishna Gokhale", "Lala Lajpat Rai"], answer: 0 },
-      { q: "Chandrayaan-3 successfully landed on which part of the Moon in 2023?", options: ["North Pole", "South Pole", "Equator", "Far Side"], answer: 1 },
-      { q: "Which military exercise is conducted between India and Russia?", options: ["Indra", "Varuna", "Simbex", "Yudh Abhyas"], answer: 0 },
-      { q: "Who wrote the book 'Discovery of India'?", options: ["Mahatma Gandhi", "Jawaharlal Nehru", "Subhash Chandra Bose", "Rabindranath Tagore"], answer: 1 }
+      // 🔹 Science & Tech
+      { q: "Which Indian mission achieved a soft landing near the Moon's south pole in 2023?", options: ["Chandrayaan-2", "Chandrayaan-3", "Mangalyaan", "Aditya-L1"], answer: 1 },
+      { q: "The James Webb Space Telescope is primarily designed to observe which radiation?", options: ["X-ray", "Infrared", "Ultraviolet", "Gamma ray"], answer: 1 },
+      { q: "INS Arihant is associated with which category of submarines?", options: ["Diesel-electric", "Nuclear-powered", "Conventional attack", "Ballistic missile"], answer: 3 },
+      { q: "The 5G rollout in India began in which year?", options: ["2019", "2020", "2021", "2022"], answer: 3 },
+      { q: "CRISPR-Cas9 technology is used for?", options: ["DNA Sequencing", "Genome Editing", "Protein Synthesis", "RNA Translation"], answer: 1 },
+      { q: "Which is India’s first solar mission launched in 2023?", options: ["Aditya-L1", "Mangalyaan-2", "Shukrayaan", "ASTROSAT-2"], answer: 0 },
+      { q: "The Artemis program is led by which space agency?", options: ["NASA", "ISRO", "ESA", "JAXA"], answer: 0 },
+      { q: "Gaganyaan mission of ISRO aims to send humans to?", options: ["Moon", "Low Earth Orbit", "Mars", "ISS"], answer: 1 },
+      { q: "Quantum computing is primarily based on?", options: ["Transistors", "Bits", "Qubits", "Microprocessors"], answer: 2 },
+      { q: "Project Netra by ISRO deals with?", options: ["Space debris tracking", "Mars mission", "Moon mission", "Asteroid mining"], answer: 0 },
+
+      // 🔹 Current Affairs
+      { q: "Which country hosted the G20 Summit 2023?", options: ["India", "Indonesia", "Japan", "Brazil"], answer: 0 },
+      { q: "India signed the 'UAE Comprehensive Economic Partnership Agreement' in which year?", options: ["2020", "2021", "2022", "2023"], answer: 2 },
+      { q: "COP28 was held in which country?", options: ["Egypt", "UAE", "India", "Brazil"], answer: 1 },
+      { q: "Which Indian city was declared UNESCO World Heritage City in 2017?", options: ["Jaipur", "Ahmedabad", "Varanasi", "Delhi"], answer: 1 },
+      { q: "PM Gati Shakti Master Plan focuses on?", options: ["Defence", "Digital India", "Infrastructure", "Healthcare"], answer: 2 },
+      { q: "The 2023 BRICS summit admitted how many new members?", options: ["3", "5", "6", "7"], answer: 2 },
+      { q: "Which country was the chief guest at India’s Republic Day 2024?", options: ["France", "Japan", "Egypt", "Brazil"], answer: 0 },
+      { q: "India's presidency of the Shanghai Cooperation Organisation (SCO) was in?", options: ["2022", "2023", "2024", "2025"], answer: 1 },
+      { q: "The National Green Hydrogen Mission was launched in which year?", options: ["2020", "2021", "2022", "2023"], answer: 3 },
+      { q: "India’s first AI supercomputer is named?", options: ["AIRAWAT", "PARAM", "SHAKTI", "BRAIN"], answer: 0 },
+
+      // 🔹 Military Exercises
+      { q: "Exercise Yudh Abhyas is between India and?", options: ["Russia", "USA", "Japan", "UK"], answer: 1 },
+      { q: "Exercise Varuna is a naval exercise between India and?", options: ["USA", "France", "Australia", "UK"], answer: 1 },
+      { q: "Exercise Indra is held with which country?", options: ["Russia", "USA", "Japan", "France"], answer: 0 },
+      { q: "Exercise Garuda is between Indian Air Force and?", options: ["Russia", "France", "USA", "UK"], answer: 1 },
+      { q: "Exercise Milan is a naval exercise hosted by?", options: ["Japan", "Australia", "India", "USA"], answer: 2 },
+      { q: "Exercise Shakti is held between India and?", options: ["UK", "France", "Russia", "Japan"], answer: 1 },
+      { q: "Exercise Malabar involves India, USA, Japan and?", options: ["France", "Australia", "Russia", "Singapore"], answer: 1 },
+      { q: "Exercise Sampriti is conducted with?", options: ["Nepal", "Bangladesh", "Sri Lanka", "Bhutan"], answer: 1 },
+      { q: "Exercise Ajeya Warrior is held with?", options: ["USA", "France", "UK", "Japan"], answer: 2 },
+      { q: "Exercise Surya Kiran is held with?", options: ["Nepal", "Bangladesh", "Sri Lanka", "Myanmar"], answer: 0 },
+
+      // 🔹 Modern History
+      { q: "Who was the first Governor-General of India?", options: ["Lord Wellesley", "Lord William Bentinck", "Warren Hastings", "Lord Dalhousie"], answer: 2 },
+      { q: "The Permanent Settlement was introduced by?", options: ["Lord Cornwallis", "Lord Dalhousie", "Lord Canning", "Lord Wellesley"], answer: 0 },
+      { q: "The first railway line in India ran between?", options: ["Mumbai–Thane", "Delhi–Agra", "Howrah–Hooghly", "Chennai–Arakkonam"], answer: 0 },
+      { q: "Who is known as the 'Grand Old Man of India'?", options: ["Gopal Krishna Gokhale", "Dadabhai Naoroji", "Bal Gangadhar Tilak", "Lala Lajpat Rai"], answer: 1 },
+      { q: "Partition of Bengal was carried out in?", options: ["1903", "1905", "1907", "1909"], answer: 1 },
+      { q: "The slogan 'Do or Die' was given during?", options: ["Non-Cooperation", "Civil Disobedience", "Quit India", "Swadeshi"], answer: 2 },
+      { q: "The INA (Indian National Army) was founded by?", options: ["Mahatma Gandhi", "Subhash Chandra Bose", "Rash Behari Bose", "Lala Lajpat Rai"], answer: 2 },
+      { q: "Who wrote 'Hind Swaraj'?", options: ["Mahatma Gandhi", "Jawaharlal Nehru", "Bal Gangadhar Tilak", "Dadabhai Naoroji"], answer: 0 },
+      { q: "Who was the first Indian woman to become President of INC?", options: ["Annie Besant", "Sarojini Naidu", "Vijaya Lakshmi Pandit", "Sucheta Kriplani"], answer: 0 },
+      { q: "Who led the Bardoli Satyagraha?", options: ["Mahatma Gandhi", "Sardar Patel", "Bal Gangadhar Tilak", "Lala Lajpat Rai"], answer: 1 },
+      { q: "The Rowlatt Act was passed in?", options: ["1917", "1919", "1920", "1921"], answer: 1 },
+      { q: "The Jallianwala Bagh massacre took place in?", options: ["1917", "1918", "1919", "1920"], answer: 2 },
+      { q: "Who founded the Arya Samaj?", options: ["Raja Ram Mohan Roy", "Swami Dayanand Saraswati", "Swami Vivekananda", "Ishwar Chandra Vidyasagar"], answer: 1 },
+      { q: "Who was the Viceroy during the Quit India Movement?", options: ["Lord Irwin", "Lord Wavell", "Lord Linlithgow", "Lord Mountbatten"], answer: 2 },
+      { q: "The Simon Commission was appointed in?", options: ["1925", "1927", "1928", "1930"], answer: 1 },
+      { q: "The 'Drain of Wealth' theory was given by?", options: ["Bal Gangadhar Tilak", "Mahatma Gandhi", "Dadabhai Naoroji", "Jawaharlal Nehru"], answer: 2 },
+      { q: "The capital of India shifted from Calcutta to Delhi in?", options: ["1905", "1910", "1911", "1912"], answer: 2 },
+      { q: "The Doctrine of Lapse was associated with?", options: ["Lord Dalhousie", "Lord Curzon", "Lord Ripon", "Lord Canning"], answer: 0 },
+      { q: "Who gave the slogan 'Inquilab Zindabad'?", options: ["Bhagat Singh", "Subhash Bose", "Chandra Shekhar Azad", "Lala Lajpat Rai"], answer: 0 }
+    
     ];
 
     // Make 50 questions by repeating pool
@@ -110,3 +157,4 @@
   </script>
 </body>
 </html>
+
