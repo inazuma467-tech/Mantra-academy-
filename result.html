@@ -2,43 +2,47 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Mantra Academy - Results</title>
+  <title>Mantra Academy - Result</title>
   <style>
-    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f6f9; }
+    body { font-family: Arial, sans-serif; margin: 20px; background: #f4f6f9; text-align: center; }
     h1 { color: #2c3e50; }
-    #resultBox { padding: 20px; background: #fff; border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.2); margin-bottom: 20px; }
-    p { font-size: 18px; margin: 8px 0; }
-    a { display: inline-block; padding: 10px 16px; background: #2c3e50;
-      color: #fff; border-radius: 8px; text-decoration: none; }
-    a:hover { background: #1a252f; }
+    .result-box { background: #fff; padding: 25px; border-radius: 10px;
+      display: inline-block; box-shadow: 0 2px 5px rgba(0,0,0,0.2); margin-top: 30px; }
+    p { font-size: 18px; margin: 10px 0; }
+    .score { font-size: 22px; font-weight: bold; color: green; }
+    .btn { display: inline-block; margin-top: 20px; padding: 12px 20px;
+      background: #2c3e50; color: #fff; text-decoration: none;
+      border-radius: 8px; transition: background 0.3s; }
+    .btn:hover { background: #1a252f; }
   </style>
 </head>
 <body>
-  <h1>Test Results</h1>
-  <div id="resultBox"></div>
-  <a href="index.html">Take Test Again</a>
+  <h1>Mantra Academy</h1>
+  <h2>UPSC 2026 Mock Test Result</h2>
+
+  <div class="result-box">
+    <p><b>Total Marks:</b> <span id="total"></span></p>
+    <p><b>Correct Answers:</b> <span id="correct"></span></p>
+    <p><b>Wrong Answers:</b> <span id="wrong"></span></p>
+    <p><b>Unattempted:</b> <span id="unattempted"></span></p>
+    <p class="score">Your Score: <span id="score"></span></p>
+    <a href="index.html" class="btn">Take Test Again</a>
+  </div>
 
   <script>
-    // Get data
-    let score       = JSON.parse(localStorage.getItem("score"));
-    let total       = JSON.parse(localStorage.getItem("total"));
-    let correct     = JSON.parse(localStorage.getItem("correct"));
-    let wrong       = JSON.parse(localStorage.getItem("wrong"));
-    let unattempted = JSON.parse(localStorage.getItem("unattempted"));
+    // Fetch values from localStorage
+    const score = parseFloat(localStorage.getItem("score")) || 0;
+    const total = parseInt(localStorage.getItem("total")) || 0;
+    const correct = parseInt(localStorage.getItem("correct")) || 0;
+    const wrong = parseInt(localStorage.getItem("wrong")) || 0;
+    const unattempted = parseInt(localStorage.getItem("unattempted")) || 0;
 
-    if (score === null) score = 0;
-
-    let percentage = total > 0 ? (score / total) * 100 : 0;
-
-    document.getElementById("resultBox").innerHTML = `
-      <p><b>Marks Secured:</b> ${score.toFixed(2)} / ${total}</p>
-      <p><b>Correct Answers:</b> ${correct}</p>
-      <p><b>Wrong Answers:</b> ${wrong}</p>
-      <p><b>Unattempted:</b> ${unattempted}</p>
-      <p><b>Percentage:</b> ${percentage.toFixed(2)}%</p>
-    `;
+    // Show results
+    document.getElementById("score").textContent = score.toFixed(2) + " / " + total;
+    document.getElementById("total").textContent = total;
+    document.getElementById("correct").textContent = correct;
+    document.getElementById("wrong").textContent = wrong;
+    document.getElementById("unattempted").textContent = unattempted;
   </script>
 </body>
-
 </html>
