@@ -27,42 +27,9 @@
   </form>
 
   <script>
-    // Sample UPSC-style questions
-            explanation: "Sarojini Naidu became the first Indian woman President of INC in 1925 (Kanpur Session)."
-  },
-  {
-    id: 40,
-
-
-    // Make 50 questions by repeating pool
-    let questions = [];
-    while (questions.length < 50) { questions = questions.concat(baseQuestions); }
-    questions.length = 50;
-
-    // Render questions
-    const qContainer = document.getElementById("questions");
-    questions.forEach((q, i) => {
-      const div = document.createElement("div");
-      div.classList.add("question");
-      div.innerHTML = `
-        <p><b>Q${i+1}. ${q.q}</b></p>
-        ${q.options.map((opt, idx) => `
-          <label><input type="radio" name="q${i}" value="${idx}"> ${opt}</label><br>`).join("")}
-      `;
-      qContainer.appendChild(div);
-    });
-
-    // Timer
-    let time = 60 * 60; // 1 hour in seconds
-    const timerDiv = document.getElementById("timer");
-    function updateTimer() {
-      const minutes = Math.floor(time / 60);
-      const seconds = time % 60;
-      timerDiv.textContent = `Time Left: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
-      time--;
-      if (time < 0) { submitTest(); }
-    }
-    setInterval(updateTimer, 1000);
+    
+  
+    
 
     // Submit handler
 const questions = [
@@ -312,7 +279,34 @@ const questions = [
     answer: 2
   }
 ];
-    
+    let questions = [];
+    while (questions.length < 50) { questions = questions.concat(baseQuestions); }
+    questions.length = 50;
+
+    // Render questions
+    const qContainer = document.getElementById("questions");
+    questions.forEach((q, i) => {
+      const div = document.createElement("div");
+      div.classList.add("question");
+      div.innerHTML = `
+        <p><b>Q${i+1}. ${q.q}</b></p>
+        ${q.options.map((opt, idx) => `
+          <label><input type="radio" name="q${i}" value="${idx}"> ${opt}</label><br>`).join("")}
+      `;
+      qContainer.appendChild(div);
+    });
+
+    // Timer
+    let time = 60 * 60; // 1 hour in seconds
+    const timerDiv = document.getElementById("timer");
+    function updateTimer() {
+      const minutes = Math.floor(time / 60);
+      const seconds = time % 60;
+      timerDiv.textContent = `Time Left: ${minutes}:${seconds < 10 ? "0" : ""}${seconds}`;
+      time--;
+      if (time < 0) { submitTest(); }
+    }
+    setInterval(updateTimer, 1000);
     function submitTest() {
       let score = 0, correct = 0, wrong = 0, unattempted = 0;
 
@@ -350,6 +344,7 @@ const questions = [
   </script>
 </body>
 </html>
+
 
 
 
