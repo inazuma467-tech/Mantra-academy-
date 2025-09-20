@@ -7,8 +7,7 @@
     body { font-family: Arial, sans-serif; margin: 20px; background: #f4f6f9; }
     h1 { color: #2c3e50; }
     #timer { font-size: 18px; font-weight: bold; color: red; margin-bottom: 20px; }
-    .question { margin: 15px 0; padding: 10px; background: #fff; border-radius: 8px;
-      box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .question { margin: 15px 0; padding: 10px; background: #fff; border-radius: 8px;      box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
     .btn-submit { display: inline-block; padding: 12px 20px; margin-top: 20px;
       background: #2c3e50; color: #fff; text-decoration: none; font-size: 16px;
       border-radius: 8px; transition: background 0.3s; cursor: pointer; }
@@ -29,363 +28,11 @@
 
   <script>
     // Sample UPSC-style questions
-    const baseQuestions = [
-      
-  {
-    id: 1,
-    question: "Who was the Governor-General of India during the Revolt of 1857?",
-    options: ["Lord Canning", "Lord Dalhousie", "Lord Wellesley", "Lord Hastings"],
-    answer: "Lord Canning",
-    explanation: "The Revolt of 1857 took place during Lord Canning’s tenure (1856–62)."
-  },
-  {
-    id: 2,
-    question: "The Vernacular Press Act (1878) was passed during the tenure of:",
-    options: ["Lord Lytton", "Lord Ripon", "Lord Curzon", "Lord Minto II"],
-    answer: "Lord Lytton",
-    explanation: "Lord Lytton passed the Vernacular Press Act to curb freedom of the Indian press."
-  },
-  {
-    id: 3,
-    question: "Who founded the Indian National Congress in 1885?",
-    options: ["A.O. Hume", "Dadabhai Naoroji", "Gopal Krishna Gokhale", "Surendranath Banerjee"],
-    answer: "A.O. Hume",
-    explanation: "The INC was founded in 1885 by Allan Octavian Hume, a retired British civil servant."
-  },
-  {
-    id: 4,
-    question: "Who gave the famous slogan ‘Swaraj is my birthright and I shall have it’?",
-    options: ["Bal Gangadhar Tilak", "Lala Lajpat Rai", "Mahatma Gandhi", "Bipin Chandra Pal"],
-    answer: "Bal Gangadhar Tilak",
-    explanation: "Tilak, a member of the Lal-Bal-Pal trio, popularized this slogan."
-  },
-  {
-    id: 5,
-    question: "The Swadeshi Movement was launched in response to:",
-    options: ["Partition of Bengal (1905)", "Rowlatt Act", "Jallianwala Bagh Massacre", "Salt March"],
-    answer: "Partition of Bengal (1905)",
-    explanation: "Lord Curzon’s partition of Bengal in 1905 triggered the Swadeshi and Boycott movements."
-  },
-  {
-    id: 6,
-    question: "Who was popularly known as the Grand Old Man of India?",
-    options: ["Dadabhai Naoroji", "Gopal Krishna Gokhale", "Bal Gangadhar Tilak", "Surendranath Banerjee"],
-    answer: "Dadabhai Naoroji",
-    explanation: "Dadabhai Naoroji was called the Grand Old Man of India; he propounded the ‘Drain of Wealth’ theory."
-  },
-  {
-    id: 7,
-    question: "The Lucknow Pact (1916) was an agreement between:",
-    options: ["Congress and Muslim League", "Congress and British Government", "Congress and Swaraj Party", "Congress and Princely States"],
-    answer: "Congress and Muslim League",
-    explanation: "The Lucknow Pact marked Hindu-Muslim unity where Congress and Muslim League agreed to joint demands."
-  },
-  {
-    id: 8,
-    question: "Who led the Dandi March in 1930?",
-    options: ["Mahatma Gandhi", "Subhas Chandra Bose", "Bal Gangadhar Tilak", "C. Rajagopalachari"],
-    answer: "Mahatma Gandhi",
-    explanation: "The Salt March (Dandi March) was led by Gandhi from Sabarmati Ashram to Dandi in 1930."
-  },
-  {
-    id: 9,
-    question: "The Quit India Movement was launched in:",
-    options: ["1942", "1930", "1920", "1919"],
-    answer: "1942",
-    explanation: "The Quit India Movement was launched by Gandhi on 8th August 1942 demanding an end to British rule."
-  },
-  {
-    id: 10,
-    question: "Who was the first Indian to be elected to the British Parliament?",
-    options: ["Dadabhai Naoroji", "Mahatma Gandhi", "Bipin Chandra Pal", "Lala Lajpat Rai"],
-    answer: "Dadabhai Naoroji",
-    explanation: "Dadabhai Naoroji was elected to the British House of Commons in 1892."
-  },
-  {
-    id: 11,
-    question: "Who was the Viceroy during the Jallianwala Bagh Massacre (1919)?",
-    options: ["Lord Chelmsford", "Lord Irwin", "Lord Reading", "Lord Hardinge"],
-    answer: "Lord Chelmsford",
-    explanation: "The Jallianwala Bagh Massacre occurred under Viceroy Lord Chelmsford’s administration."
-  },
-  {
-    id: 12,
-    question: "The Rowlatt Act (1919) aimed at:",
-    options: ["Suppressing revolutionary activities", "Promoting education", "Introducing reforms", "Ending Salt Tax"],
-    answer: "Suppressing revolutionary activities",
-    explanation: "The Rowlatt Act empowered the government to imprison political activists without trial."
-  },
-  {
-    id: 13,
-    question: "Who founded the Forward Bloc?",
-    options: ["Subhas Chandra Bose", "Mahatma Gandhi", "Jawaharlal Nehru", "Bhagat Singh"],
-    answer: "Subhas Chandra Bose",
-    explanation: "Subhas Chandra Bose founded the Forward Bloc in 1939 after resigning from Congress."
-  },
-  {
-    id: 14,
-    question: "Which session of the Indian National Congress approved the ‘Quit India’ resolution?",
-    options: ["Bombay, 1942", "Lahore, 1929", "Calcutta, 1906", "Nagpur, 1920"],
-    answer: "Bombay, 1942",
-    explanation: "The Quit India resolution was passed in the Bombay session of 1942."
-  },
-  {
-    id: 15,
-    question: "Who was the Viceroy during the Partition of Bengal (1905)?",
-    options: ["Lord Curzon", "Lord Hardinge", "Lord Minto", "Lord Lytton"],
-    answer: "Lord Curzon",
-    explanation: "Lord Curzon partitioned Bengal in 1905, triggering mass protests."
-  },
-  {
-    id: 16,
-    question: "The Simon Commission (1927) was boycotted because:",
-    options: ["It had no Indian member", "It aimed to suppress press", "It divided Bengal", "It imposed Salt Tax"],
-    answer: "It had no Indian member",
-    explanation: "The Simon Commission consisted only of British members, leading to nationwide protests."
-  },
-  {
-    id: 17,
-    question: "Who was the first President of the Indian National Congress?",
-    options: ["W.C. Bonnerjee", "Dadabhai Naoroji", "Badruddin Tyabji", "Gopal Krishna Gokhale"],
-    answer: "W.C. Bonnerjee",
-    explanation: "Womesh Chunder Bonnerjee presided over the first INC session in 1885."
-  },
-  {
-    id: 18,
-    question: "The slogan ‘Do or Die’ was given during which movement?",
-    options: ["Quit India Movement", "Civil Disobedience Movement", "Non-Cooperation Movement", "Swadeshi Movement"],
-    answer: "Quit India Movement",
-    explanation: "Mahatma Gandhi gave the slogan ‘Do or Die’ during the Quit India Movement in 1942."
-  },
-  {
-    id: 19,
-    question: "The Cabinet Mission Plan came to India in:",
-    options: ["1946", "1942", "1935", "1919"],
-    answer: "1946",
-    explanation: "The Cabinet Mission Plan came in 1946 to discuss India’s independence and partition."
-  },
-  {
-    id: 20,
-    question: "Who wrote the book ‘India Wins Freedom’?",
-    options: ["Abul Kalam Azad", "Jawaharlal Nehru", "Mahatma Gandhi", "Rajendra Prasad"],
-    answer: "Abul Kalam Azad",
-    explanation: "Maulana Abul Kalam Azad wrote ‘India Wins Freedom’ based on his experiences."
-  },
-  
-
-  {
-    id: 21,
-    question: "Who gave the call for ‘Purna Swaraj’ in the Lahore Session of Congress (1929)?",
-    options: ["Jawaharlal Nehru", "Mahatma Gandhi", "Sardar Patel", "Subhas Chandra Bose"],
-    answer: "Jawaharlal Nehru",
-    explanation: "In the Lahore Session of 1929, Jawaharlal Nehru declared Purna Swaraj as the goal of Congress."
-  },
-  {
-    id: 22,
-    question: "Who was the first woman President of the Indian National Congress?",
-    options: ["Annie Besant", "Sarojini Naidu", "Sucheta Kripalani", "Indira Gandhi"],
-    answer: "Annie Besant",
-    explanation: "Annie Besant presided over the Calcutta Session of 1917, becoming the first woman President of INC."
-  },
-  {
-    id: 23,
-    question: "The slogan ‘Inquilab Zindabad’ was popularized by:",
-    options: ["Bhagat Singh", "Mahatma Gandhi", "Lala Lajpat Rai", "Subhas Chandra Bose"],
-    answer: "Bhagat Singh",
-    explanation: "Bhagat Singh and his associates made ‘Inquilab Zindabad’ the rallying cry of revolutionaries."
-  },
-  {
-    id: 24,
-    question: "Who was the founder of the All India Muslim League?",
-    options: ["Aga Khan", "Nawab Salimullah", "Mohammad Ali Jinnah", "Syed Ahmed Khan"],
-    answer: "Nawab Salimullah",
-    explanation: "The Muslim League was founded in Dhaka in 1906 under the leadership of Nawab Salimullah."
-  },
-  {
-    id: 25,
-    question: "The Poona Pact (1932) was signed between:",
-    options: ["Gandhi and B.R. Ambedkar", "Gandhi and Jinnah", "Nehru and Bose", "Tilak and Annie Besant"],
-    answer: "Gandhi and B.R. Ambedkar",
-    explanation: "The Poona Pact secured reserved seats for the depressed classes within the Hindu community."
-  },
-  {
-    id: 26,
-    question: "Which revolutionary was associated with the ‘Alipore Bomb Case’?",
-    options: ["Aurobindo Ghosh", "Bhagat Singh", "Chittaranjan Das", "Subhas Chandra Bose"],
-    answer: "Aurobindo Ghosh",
-    explanation: "Aurobindo Ghosh was implicated in the Alipore Bomb Case of 1908."
-  },
-  {
-    id: 27,
-    question: "The Indian Councils Act of 1892 introduced:",
-    options: ["Indirect elections", "Direct elections", "Dyarchy", "Provincial autonomy"],
-    answer: "Indirect elections",
-    explanation: "The Act of 1892 allowed indirect elections to legislative councils."
-  },
-  {
-    id: 28,
-    question: "Who presided over the historic Lahore Session of 1929?",
-    options: ["Jawaharlal Nehru", "Subhas Chandra Bose", "Mahatma Gandhi", "C.R. Das"],
-    answer: "Jawaharlal Nehru",
-    explanation: "Jawaharlal Nehru presided over the Lahore Session where Purna Swaraj was declared."
-  },
-  {
-    id: 29,
-    question: "The famous Kakori Train Conspiracy (1925) was carried out by:",
-    options: ["Hindustan Republican Association", "Indian National Congress", "Muslim League", "Ghadar Party"],
-    answer: "Hindustan Republican Association",
-    explanation: "Members of the HRA, including Ram Prasad Bismil and Ashfaqulla Khan, executed the Kakori conspiracy."
-  },
-  {
-    id: 30,
-    question: "Who was the first Indian Governor-General of independent India?",
-    options: ["C. Rajagopalachari", "Lord Mountbatten", "Dr. Rajendra Prasad", "Jawaharlal Nehru"],
-    answer: "C. Rajagopalachari",
-    explanation: "C. Rajagopalachari became the first Indian Governor-General in 1948."
-  },
-  {
-    id: 31,
-    question: "Which Act is known as the ‘Black Act’?",
-    options: ["Rowlatt Act, 1919", "Vernacular Press Act, 1878", "Regulating Act, 1773", "Ilbert Bill, 1883"],
-    answer: "Rowlatt Act, 1919",
-    explanation: "The Rowlatt Act was called the Black Act because it curbed civil liberties."
-  },
-  {
-    id: 32,
-    question: "Who was known as ‘Lokmanya’?",
-    options: ["Bal Gangadhar Tilak", "Bipin Chandra Pal", "Gopal Krishna Gokhale", "Dadabhai Naoroji"],
-    answer: "Bal Gangadhar Tilak",
-    explanation: "Bal Gangadhar Tilak was honored with the title Lokmanya (accepted by the people)."
-  },
-  {
-    id: 33,
-    question: "The First Round Table Conference was held in:",
-    options: ["1930", "1931", "1932", "1935"],
-    answer: "1930",
-    explanation: "The First Round Table Conference was held in London in 1930."
-  },
-  {
-    id: 34,
-    question: "Who gave the call of ‘Back to the Vedas’?",
-    options: ["Dayanand Saraswati", "Swami Vivekananda", "Raja Ram Mohan Roy", "Ishwar Chandra Vidyasagar"],
-    answer: "Dayanand Saraswati",
-    explanation: "Dayanand Saraswati of Arya Samaj gave the slogan ‘Back to the Vedas’."
-  },
-  {
-    id: 35,
-    question: "Who established the Ghadar Party in 1913?",
-    options: ["Lala Hardayal", "Rash Behari Bose", "Bhagat Singh", "Sohan Singh Bhakna"],
-    answer: "Lala Hardayal",
-    explanation: "The Ghadar Party was founded by Lala Hardayal and others in the USA in 1913."
-  },
-  {
-    id: 36,
-    question: "Who started the Home Rule Movement in India?",
-    options: ["Bal Gangadhar Tilak and Annie Besant", "Mahatma Gandhi", "Jawaharlal Nehru", "Subhas Chandra Bose"],
-    answer: "Bal Gangadhar Tilak and Annie Besant",
-    explanation: "Tilak and Annie Besant launched parallel Home Rule movements in 1916."
-  },
-  {
-    id: 37,
-    question: "The Ilbert Bill controversy (1883) was related to:",
-    options: ["Trial of Europeans by Indian judges", "Partition of Bengal", "Press freedom", "Dyarchy"],
-    answer: "Trial of Europeans by Indian judges",
-    explanation: "The Ilbert Bill sought to allow Indian judges to try European offenders, sparking controversy."
-  },
-  {
-    id: 38,
-    question: "Who was the author of ‘Hind Swaraj’?",
-    options: ["Mahatma Gandhi", "Bal Gangadhar Tilak", "Jawaharlal Nehru", "B.R. Ambedkar"],
-    answer: "Mahatma Gandhi",
-    explanation: "Mahatma Gandhi wrote Hind Swaraj in 1909, outlining his vision of self-rule."
-  },
-  {
-    id: 39,
-    question: "Who was the first Indian woman to become the President of the Indian National Congress?",
-    options: ["Sarojini Naidu", "Annie Besant", "Vijaya Lakshmi Pandit", "Sucheta Kripalani"],
-    answer: "Sarojini Naidu",
-    explanation: "Sarojini Naidu became the first Indian woman President of INC in 1925 (Kanpur Session)."
+            explanation: "Sarojini Naidu became the first Indian woman President of INC in 1925 (Kanpur Session)."
   },
   {
     id: 40,
-    question: "Which movement is associated with the slogan ‘Simon Go Back’?",
-    options: ["Protest against Simon Commission", "Quit India Movement", "Non-Cooperation Movement", "Civil Disobedience Movement"],
-    answer: "Protest against Simon Commission",
-    explanation: "The slogan ‘Simon Go Back’ was raised during protests against the Simon Commission in 1928."
-  },
-  {
-    id: 41,
-    question: "Who led the Royal Indian Navy Mutiny of 1946?",
-    options: ["Sailors in Bombay", "INA officers", "Peasants in Bengal", "Workers in Calcutta"],
-    answer: "Sailors in Bombay",
-    explanation: "The RIN Mutiny was led by naval ratings in Bombay in 1946."
-  },
-  {
-    id: 42,
-    question: "Who coined the term ‘Drain of Wealth’?",
-    options: ["Dadabhai Naoroji", "R.C. Dutt", "Gopal Krishna Gokhale", "Jawaharlal Nehru"],
-    answer: "Dadabhai Naoroji",
-    explanation: "Dadabhai Naoroji’s ‘Drain Theory’ explained how British policies drained Indian wealth."
-  },
-  {
-    id: 43,
-    question: "The Hunter Commission was appointed to enquire into:",
-    options: ["Jallianwala Bagh Massacre", "Rowlatt Act", "Partition of Bengal", "Salt Satyagraha"],
-    answer: "Jallianwala Bagh Massacre",
-    explanation: "The Hunter Commission was appointed in 1919 to investigate the Jallianwala Bagh tragedy."
-  },
-  {
-    id: 44,
-    question: "Who started the weekly newspaper ‘Young India’?",
-    options: ["Mahatma Gandhi", "Bal Gangadhar Tilak", "Subhas Chandra Bose", "C.R. Das"],
-    answer: "Mahatma Gandhi",
-    explanation: "Gandhi used Young India to spread his political and social ideas."
-  },
-  {
-    id: 45,
-    question: "Which British Viceroy announced the August Offer (1940)?",
-    options: ["Lord Linlithgow", "Lord Wavell", "Lord Irwin", "Lord Mountbatten"],
-    answer: "Lord Linlithgow",
-    explanation: "Lord Linlithgow announced the August Offer promising Dominion status after the war."
-  },
-  {
-    id: 46,
-    question: "Who was popularly called ‘Nightingale of India’?",
-    options: ["Sarojini Naidu", "Annie Besant", "Vijaya Lakshmi Pandit", "Aruna Asaf Ali"],
-    answer: "Sarojini Naidu",
-    explanation: "Sarojini Naidu was called the Nightingale of India for her poetry."
-  },
-  {
-    id: 47,
-    question: "The Montagu-Chelmsford Reforms (1919) introduced:",
-    options: ["Dyarchy in provinces", "Direct elections", "Separate electorates", "All of the above"],
-    answer: "All of the above",
-    explanation: "The 1919 Act introduced Dyarchy, direct elections, and expanded separate electorates."
-  },
-  {
-    id: 48,
-    question: "Who was the first Indian to become President of the UN General Assembly?",
-    options: ["Vijaya Lakshmi Pandit", "Jawaharlal Nehru", "Sarojini Naidu", "Dr. Radhakrishnan"],
-    answer: "Vijaya Lakshmi Pandit",
-    explanation: "Vijaya Lakshmi Pandit became the first woman and Indian President of the UNGA in 1953."
-  },
-  {
-    id: 49,
-    question: "The Indian Independence Act of 1947 was passed by:",
-    options: ["British Parliament", "Indian Constituent Assembly", "Cabinet Mission", "Round Table Conference"],
-    answer: "British Parliament",
-    explanation: "The British Parliament passed the Indian Independence Act, granting freedom to India."
-  },
-  {
-    id: 50,
-    question: "Who was the last Governor-General of independent India?",
-    options: ["C. Rajagopalachari", "Lord Mountbatten", "Jawaharlal Nehru", "Dr. Rajendra Prasad"],
-    answer: "C. Rajagopalachari",
-    explanation: "C. Rajagopalachari served as the last Governor-General from 1948–50."
-  }
 
-    
-    ];
 
     // Make 50 questions by repeating pool
     let questions = [];
@@ -418,6 +65,254 @@
     setInterval(updateTimer, 1000);
 
     // Submit handler
+const questions = [
+  {
+    q: "Who was the founder of the Indian National Congress (INC)?",
+    options: ["Dadabhai Naoroji", "Gopal Krishna Gokhale", "A.O. Hume", "W.C. Bonnerjee"],
+    answer: 2
+  },
+  {
+    q: "The slogan ‘Swaraj is my birthright and I shall have it’ was given by?",
+    options: ["Lala Lajpat Rai", "Bal Gangadhar Tilak", "Bipin Chandra Pal", "Gopal Krishna Gokhale"],
+    answer: 1
+  },
+  {
+    q: "Who led the Dandi March in 1930?",
+    options: ["Jawaharlal Nehru", "Subhas Chandra Bose", "Sardar Patel", "Mahatma Gandhi"],
+    answer: 3
+  },
+  {
+    q: "Who was the first Governor-General of India?",
+    options: ["Lord Wellesley", "Lord Dalhousie", "Lord William Bentinck", "Lord Canning"],
+    answer: 2
+  },
+  {
+    q: "Who was known as the 'Grand Old Man of India'?",
+    options: ["Bal Gangadhar Tilak", "Dadabhai Naoroji", "Gopal Krishna Gokhale", "Lala Lajpat Rai"],
+    answer: 1
+  },
+  {
+    q: "The Partition of Bengal took place in?",
+    options: ["1890", "1903", "1905", "1911"],
+    answer: 2
+  },
+  {
+    q: "Who was the Viceroy of India during the Revolt of 1857?",
+    options: ["Lord Dalhousie", "Lord Canning", "Lord Ripon", "Lord Curzon"],
+    answer: 1
+  },
+  {
+    q: "The slogan 'Inquilab Zindabad' was popularized by?",
+    options: ["Bhagat Singh", "Hasrat Mohani", "Sardar Patel", "Lala Lajpat Rai"],
+    answer: 1
+  },
+  {
+    q: "Who was the leader of the INA (Indian National Army)?",
+    options: ["Jawaharlal Nehru", "Mahatma Gandhi", "Subhas Chandra Bose", "C. Rajagopalachari"],
+    answer: 2
+  },
+  {
+    q: "Who authored the book 'India Wins Freedom'?",
+    options: ["Jawaharlal Nehru", "Maulana Abul Kalam Azad", "Mahatma Gandhi", "Subhas Chandra Bose"],
+    answer: 1
+  },
+  {
+    q: "Who was the first Indian President of INC?",
+    options: ["Dadabhai Naoroji", "Gopal Krishna Gokhale", "W.C. Bonnerjee", "A.O. Hume"],
+    answer: 2
+  },
+  {
+    q: "Who was the Viceroy during Jallianwala Bagh massacre?",
+    options: ["Lord Irwin", "Lord Curzon", "Lord Chelmsford", "Lord Reading"],
+    answer: 2
+  },
+  {
+    q: "The first session of INC was held in?",
+    options: ["Delhi", "Calcutta", "Madras", "Bombay"],
+    answer: 3
+  },
+  {
+    q: "The Montagu–Chelmsford Reforms were introduced in?",
+    options: ["1909", "1919", "1935", "1947"],
+    answer: 1
+  },
+  {
+    q: "Who was known as the 'Lion of Punjab'?",
+    options: ["Bal Gangadhar Tilak", "Bipin Chandra Pal", "Lala Lajpat Rai", "Bhagat Singh"],
+    answer: 2
+  },
+  {
+    q: "Who founded the Forward Bloc?",
+    options: ["Subhas Chandra Bose", "Jawaharlal Nehru", "Sardar Patel", "Rajendra Prasad"],
+    answer: 0
+  },
+  {
+    q: "Who wrote 'Hind Swaraj'?",
+    options: ["Mahatma Gandhi", "Jawaharlal Nehru", "Bal Gangadhar Tilak", "Rabindranath Tagore"],
+    answer: 0
+  },
+  {
+    q: "The capital of India was shifted from Calcutta to Delhi in?",
+    options: ["1905", "1911", "1920", "1935"],
+    answer: 1
+  },
+  {
+    q: "The Ilbert Bill controversy took place under which Viceroy?",
+    options: ["Lord Curzon", "Lord Ripon", "Lord Lytton", "Lord Chelmsford"],
+    answer: 1
+  },
+  {
+    q: "Who established the All India Trade Union Congress (AITUC)?",
+    options: ["Bal Gangadhar Tilak", "Lala Lajpat Rai", "Sardar Patel", "B.R. Ambedkar"],
+    answer: 1
+  },
+  {
+    q: "Who founded the INA before Subhas Chandra Bose?",
+    options: ["Rash Behari Bose", "Mohan Singh", "Sardar Patel", "Jawaharlal Nehru"],
+    answer: 1
+  },
+  {
+    q: "Who was the first woman President of INC?",
+    options: ["Annie Besant", "Sarojini Naidu", "Vijayalakshmi Pandit", "Sucheta Kripalani"],
+    answer: 0
+  },
+  {
+    q: "Who introduced the Permanent Settlement in Bengal?",
+    options: ["Lord Cornwallis", "Lord Wellesley", "Lord Dalhousie", "Lord Ripon"],
+    answer: 0
+  },
+  {
+    q: "Who founded the Arya Samaj?",
+    options: ["Raja Ram Mohan Roy", "Swami Dayanand Saraswati", "Swami Vivekananda", "Keshab Chandra Sen"],
+    answer: 1
+  },
+  {
+    q: "The Hunter Commission was related to?",
+    options: ["Education Reforms", "Land Revenue", "Police Reforms", "Jallianwala Bagh"],
+    answer: 0
+  },
+  {
+    q: "Who founded the Servants of India Society?",
+    options: ["Bal Gangadhar Tilak", "Gopal Krishna Gokhale", "Dadabhai Naoroji", "Mahatma Gandhi"],
+    answer: 1
+  },
+  {
+    q: "Who established the Ramakrishna Mission?",
+    options: ["Ramakrishna Paramhansa", "Swami Vivekananda", "Keshab Chandra Sen", "Raja Ram Mohan Roy"],
+    answer: 1
+  },
+  {
+    q: "Who led the Santhal Rebellion?",
+    options: ["Tantia Tope", "Sidhu and Kanhu", "Rani Lakshmibai", "Kunwar Singh"],
+    answer: 1
+  },
+  {
+    q: "Who was the last Governor-General of free India?",
+    options: ["Lord Mountbatten", "C. Rajagopalachari", "Rajendra Prasad", "Jawaharlal Nehru"],
+    answer: 1
+  },
+  {
+    q: "Who was called the 'Prince of Patriots'?",
+    options: ["Subhas Chandra Bose", "Jawaharlal Nehru", "Mahatma Gandhi", "Sardar Patel"],
+    answer: 0
+  },
+  {
+    q: "Who introduced the Doctrine of Lapse?",
+    options: ["Lord Dalhousie", "Lord Wellesley", "Lord Canning", "Lord Ripon"],
+    answer: 0
+  },
+  {
+    q: "Who was the first Indian to join the ICS?",
+    options: ["Bal Gangadhar Tilak", "Gopal Krishna Gokhale", "Satyendranath Tagore", "Dadabhai Naoroji"],
+    answer: 2
+  },
+  {
+    q: "Who founded the Brahmo Samaj?",
+    options: ["Raja Ram Mohan Roy", "Swami Vivekananda", "Swami Dayanand Saraswati", "Rabindranath Tagore"],
+    answer: 0
+  },
+  {
+    q: "Who was the first Muslim President of INC?",
+    options: ["Maulana Azad", "Badruddin Tyabji", "Rafi Ahmed Kidwai", "Hakim Ajmal Khan"],
+    answer: 1
+  },
+  {
+    q: "Who was the first Indian woman President of INC?",
+    options: ["Sarojini Naidu", "Annie Besant", "Vijayalakshmi Pandit", "Sucheta Kripalani"],
+    answer: 0
+  },
+  {
+    q: "Who gave the slogan 'Jai Hind'?",
+    options: ["Bhagat Singh", "Mahatma Gandhi", "Subhas Chandra Bose", "Jawaharlal Nehru"],
+    answer: 2
+  },
+  {
+    q: "Who introduced the Subsidiary Alliance?",
+    options: ["Lord Dalhousie", "Lord Cornwallis", "Lord Wellesley", "Lord Ripon"],
+    answer: 2
+  },
+  {
+    q: "Who was the first woman Governor of an Indian state?",
+    options: ["Vijayalakshmi Pandit", "Annie Besant", "Sarojini Naidu", "Sucheta Kripalani"],
+    answer: 2
+  },
+  {
+    q: "The Rowlatt Act was passed in?",
+    options: ["1905", "1917", "1919", "1921"],
+    answer: 2
+  },
+  {
+    q: "Who founded the Prarthana Samaj?",
+    options: ["Atmaram Pandurang", "Raja Ram Mohan Roy", "Swami Dayanand Saraswati", "Keshab Chandra Sen"],
+    answer: 0
+  },
+  {
+    q: "Who founded the Theosophical Society in India?",
+    options: ["Annie Besant", "Madame Blavatsky", "Dayanand Saraswati", "Raja Ram Mohan Roy"],
+    answer: 1
+  },
+  {
+    q: "Who led the Revolt of 1857 in Kanpur?",
+    options: ["Tantia Tope", "Nana Saheb", "Rani Lakshmibai", "Bahadur Shah II"],
+    answer: 1
+  },
+  {
+    q: "Who was the leader of the 1857 revolt in Lucknow?",
+    options: ["Begum Hazrat Mahal", "Kunwar Singh", "Mangal Pandey", "Tantia Tope"],
+    answer: 0
+  },
+  {
+    q: "Who was the founder of Aligarh Movement?",
+    options: ["Syed Ahmed Khan", "Badruddin Tyabji", "Hakim Ajmal Khan", "Maulana Azad"],
+    answer: 0
+  },
+  {
+    q: "Who was the last Mughal emperor of India?",
+    options: ["Akbar II", "Bahadur Shah II", "Aurangzeb", "Shah Alam II"],
+    answer: 1
+  },
+  {
+    q: "Who was the first Indian to demand 'Swaraj' in INC session?",
+    options: ["Dadabhai Naoroji", "Bal Gangadhar Tilak", "Bipin Chandra Pal", "Gopal Krishna Gokhale"],
+    answer: 0
+  },
+  {
+    q: "The Simon Commission was appointed in?",
+    options: ["1919", "1927", "1935", "1942"],
+    answer: 1
+  },
+  {
+    q: "Who gave the slogan 'Do or Die'?",
+    options: ["Mahatma Gandhi", "Bhagat Singh", "Subhas Bose", "Jawaharlal Nehru"],
+    answer: 0
+  },
+  {
+    q: "Who was the first President of independent India?",
+    options: ["C. Rajagopalachari", "Jawaharlal Nehru", "Rajendra Prasad", "Sardar Patel"],
+    answer: 2
+  }
+];
+    
     function submitTest() {
       let score = 0, correct = 0, wrong = 0, unattempted = 0;
 
@@ -455,5 +350,6 @@
   </script>
 </body>
 </html>
+
 
 
