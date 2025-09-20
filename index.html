@@ -7,7 +7,8 @@
     body { font-family: Arial, sans-serif; margin: 20px; background: #f4f6f9; }
     h1 { color: #2c3e50; }
     #timer { font-size: 18px; font-weight: bold; color: red; margin-bottom: 20px; }
-    .question { margin: 15px 0; padding: 10px; background: #fff; border-radius: 8px;      box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
+    .question { margin: 15px 0; padding: 10px; background: #fff; border-radius: 8px;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.1); }
     .btn-submit { display: inline-block; padding: 12px 20px; margin-top: 20px;
       background: #2c3e50; color: #fff; text-decoration: none; font-size: 16px;
       border-radius: 8px; transition: background 0.3s; cursor: pointer; }
@@ -22,268 +23,66 @@
 
   <form id="quizForm">
     <div id="questions"></div>
-    <a href="result.html" id="submitLink" class="btn-submit">Submit Test</a>
+    <a href="result23.html" id="submitLink" class="btn-submit">Submit Test</a>
     <p id="message">Answers will be processed automatically</p>
   </form>
 
   <script>
-    
+    // 50 Modern History Questions
+    const questions = [
+      { q: "Who was the founder of the Indian National Congress (INC)?", options: ["Dadabhai Naoroji","Gopal Krishna Gokhale","A.O. Hume","W.C. Bonnerjee"], answer: 2 },
+      { q: "The slogan ‘Swaraj is my birthright and I shall have it’ was given by?", options: ["Lala Lajpat Rai","Bal Gangadhar Tilak","Bipin Chandra Pal","Gopal Krishna Gokhale"], answer: 1 },
+      { q: "Who led the Dandi March in 1930?", options: ["Jawaharlal Nehru","Subhas Chandra Bose","Sardar Patel","Mahatma Gandhi"], answer: 3 },
+      { q: "Who was the first Governor-General of India?", options: ["Lord Wellesley","Lord Dalhousie","Lord William Bentinck","Lord Canning"], answer: 2 },
+      { q: "Who was known as the 'Grand Old Man of India'?", options: ["Bal Gangadhar Tilak","Dadabhai Naoroji","Gopal Krishna Gokhale","Lala Lajpat Rai"], answer: 1 },
+      { q: "The Partition of Bengal took place in?", options: ["1890","1903","1905","1911"], answer: 2 },
+      { q: "Who was the Viceroy of India during the Revolt of 1857?", options: ["Lord Dalhousie","Lord Canning","Lord Ripon","Lord Curzon"], answer: 1 },
+      { q: "The slogan 'Inquilab Zindabad' was popularized by?", options: ["Bhagat Singh","Hasrat Mohani","Sardar Patel","Lala Lajpat Rai"], answer: 1 },
+      { q: "Who was the leader of the INA (Indian National Army)?", options: ["Jawaharlal Nehru","Mahatma Gandhi","Subhas Chandra Bose","C. Rajagopalachari"], answer: 2 },
+      { q: "Who authored the book 'India Wins Freedom'?", options: ["Jawaharlal Nehru","Maulana Abul Kalam Azad","Mahatma Gandhi","Subhas Chandra Bose"], answer: 1 },
+      { q: "Who was the first Indian President of INC?", options: ["Dadabhai Naoroji","Gopal Krishna Gokhale","W.C. Bonnerjee","A.O. Hume"], answer: 2 },
+      { q: "Who was the Viceroy during Jallianwala Bagh massacre?", options: ["Lord Irwin","Lord Curzon","Lord Chelmsford","Lord Reading"], answer: 2 },
+      { q: "The first session of INC was held in?", options: ["Delhi","Calcutta","Madras","Bombay"], answer: 3 },
+      { q: "The Montagu–Chelmsford Reforms were introduced in?", options: ["1909","1919","1935","1947"], answer: 1 },
+      { q: "Who was known as the 'Lion of Punjab'?", options: ["Bal Gangadhar Tilak","Bipin Chandra Pal","Lala Lajpat Rai","Bhagat Singh"], answer: 2 },
+      { q: "Who founded the Forward Bloc?", options: ["Subhas Chandra Bose","Jawaharlal Nehru","Sardar Patel","Rajendra Prasad"], answer: 0 },
+      { q: "Who wrote 'Hind Swaraj'?", options: ["Mahatma Gandhi","Jawaharlal Nehru","Bal Gangadhar Tilak","Rabindranath Tagore"], answer: 0 },
+      { q: "The capital of India was shifted from Calcutta to Delhi in?", options: ["1905","1911","1920","1935"], answer: 1 },
+      { q: "The Ilbert Bill controversy took place under which Viceroy?", options: ["Lord Curzon","Lord Ripon","Lord Lytton","Lord Chelmsford"], answer: 1 },
+      { q: "Who established the All India Trade Union Congress (AITUC)?", options: ["Bal Gangadhar Tilak","Lala Lajpat Rai","Sardar Patel","B.R. Ambedkar"], answer: 1 },
+      { q: "Who founded the INA before Subhas Chandra Bose?", options: ["Rash Behari Bose","Mohan Singh","Sardar Patel","Jawaharlal Nehru"], answer: 1 },
+      { q: "Who was the first woman President of INC?", options: ["Annie Besant","Sarojini Naidu","Vijayalakshmi Pandit","Sucheta Kripalani"], answer: 0 },
+      { q: "Who introduced the Permanent Settlement in Bengal?", options: ["Lord Cornwallis","Lord Wellesley","Lord Dalhousie","Lord Ripon"], answer: 0 },
+      { q: "Who founded the Arya Samaj?", options: ["Raja Ram Mohan Roy","Swami Dayanand Saraswati","Swami Vivekananda","Keshab Chandra Sen"], answer: 1 },
+      { q: "The Hunter Commission was related to?", options: ["Education Reforms","Land Revenue","Police Reforms","Jallianwala Bagh"], answer: 0 },
+      { q: "Who founded the Servants of India Society?", options: ["Bal Gangadhar Tilak","Gopal Krishna Gokhale","Dadabhai Naoroji","Mahatma Gandhi"], answer: 1 },
+      { q: "Who established the Ramakrishna Mission?", options: ["Ramakrishna Paramhansa","Swami Vivekananda","Keshab Chandra Sen","Raja Ram Mohan Roy"], answer: 1 },
+      { q: "Who led the Santhal Rebellion?", options: ["Tantia Tope","Sidhu and Kanhu","Rani Lakshmibai","Kunwar Singh"], answer: 1 },
+      { q: "Who was the last Governor-General of free India?", options: ["Lord Mountbatten","C. Rajagopalachari","Rajendra Prasad","Jawaharlal Nehru"], answer: 1 },
+      { q: "Who was called the 'Prince of Patriots'?", options: ["Subhas Chandra Bose","Jawaharlal Nehru","Mahatma Gandhi","Sardar Patel"], answer: 0 },
+      { q: "Who introduced the Doctrine of Lapse?", options: ["Lord Dalhousie","Lord Wellesley","Lord Canning","Lord Ripon"], answer: 0 },
+      { q: "Who was the first Indian to join the ICS?", options: ["Bal Gangadhar Tilak","Gopal Krishna Gokhale","Satyendranath Tagore","Dadabhai Naoroji"], answer: 2 },
+      { q: "Who founded the Brahmo Samaj?", options: ["Raja Ram Mohan Roy","Swami Vivekananda","Swami Dayanand Saraswati","Rabindranath Tagore"], answer: 0 },
+      { q: "Who was the first Muslim President of INC?", options: ["Maulana Azad","Badruddin Tyabji","Rafi Ahmed Kidwai","Hakim Ajmal Khan"], answer: 1 },
+      { q: "Who was the first Indian woman President of INC?", options: ["Sarojini Naidu","Annie Besant","Vijayalakshmi Pandit","Sucheta Kripalani"], answer: 0 },
+      { q: "Who gave the slogan 'Jai Hind'?", options: ["Bhagat Singh","Mahatma Gandhi","Subhas Chandra Bose","Jawaharlal Nehru"], answer: 2 },
+      { q: "Who introduced the Subsidiary Alliance?", options: ["Lord Dalhousie","Lord Cornwallis","Lord Wellesley","Lord Ripon"], answer: 2 },
+      { q: "Who was the first woman Governor of an Indian state?", options: ["Vijayalakshmi Pandit","Annie Besant","Sarojini Naidu","Sucheta Kripalani"], answer: 2 },
+      { q: "The Rowlatt Act was passed in?", options: ["1905","1917","1919","1921"], answer: 2 },
+      { q: "Who founded the Prarthana Samaj?", options: ["Atmaram Pandurang","Raja Ram Mohan Roy","Swami Dayanand Saraswati","Keshab Chandra Sen"], answer: 0 },
+      { q: "Who founded the Theosophical Society in India?", options: ["Annie Besant","Madame Blavatsky","Dayanand Saraswati","Raja Ram Mohan Roy"], answer: 1 },
+      { q: "Who led the Revolt of 1857 in Kanpur?", options: ["Tantia Tope","Nana Saheb","Rani Lakshmibai","Bahadur Shah II"], answer: 1 },
+      { q: "Who was the leader of the 1857 revolt in Lucknow?", options: ["Begum Hazrat Mahal","Kunwar Singh","Mangal Pandey","Tantia Tope"], answer: 0 },
+      { q: "Who was the founder of Aligarh Movement?", options: ["Syed Ahmed Khan","Badruddin Tyabji","Hakim Ajmal Khan","Maulana Azad"], answer: 0 },
+      { q: "Who was the last Mughal emperor of India?", options: ["Akbar II","Bahadur Shah II","Aurangzeb","Shah Alam II"], answer: 1 },
+      { q: "Who was the first Indian to demand 'Swaraj' in INC session?", options: ["Dadabhai Naoroji","Bal Gangadhar Tilak","Bipin Chandra Pal","Gopal Krishna Gokhale"], answer: 0 },
+      { q: "The Simon Commission was appointed in?", options: ["1919","1927","1935","1942"], answer: 1 },
+      { q: "Who gave the slogan 'Do or Die'?", options: ["Mahatma Gandhi","Bhagat Singh","Subhas Bose","Jawaharlal Nehru"], answer: 0 },
+      { q: "Who was the first President of independent India?", options: ["C. Rajagopalachari","Jawaharlal Nehru","Rajendra Prasad","Sardar Patel"], answer: 2 }
   
-    
+    ];
 
-    // Submit handler
-const questions = [
-  {
-    q: "Who was the founder of the Indian National Congress (INC)?",
-    options: ["Dadabhai Naoroji", "Gopal Krishna Gokhale", "A.O. Hume", "W.C. Bonnerjee"],
-    answer: 2
-  },
-  {
-    q: "The slogan ‘Swaraj is my birthright and I shall have it’ was given by?",
-    options: ["Lala Lajpat Rai", "Bal Gangadhar Tilak", "Bipin Chandra Pal", "Gopal Krishna Gokhale"],
-    answer: 1
-  },
-  {
-    q: "Who led the Dandi March in 1930?",
-    options: ["Jawaharlal Nehru", "Subhas Chandra Bose", "Sardar Patel", "Mahatma Gandhi"],
-    answer: 3
-  },
-  {
-    q: "Who was the first Governor-General of India?",
-    options: ["Lord Wellesley", "Lord Dalhousie", "Lord William Bentinck", "Lord Canning"],
-    answer: 2
-  },
-  {
-    q: "Who was known as the 'Grand Old Man of India'?",
-    options: ["Bal Gangadhar Tilak", "Dadabhai Naoroji", "Gopal Krishna Gokhale", "Lala Lajpat Rai"],
-    answer: 1
-  },
-  {
-    q: "The Partition of Bengal took place in?",
-    options: ["1890", "1903", "1905", "1911"],
-    answer: 2
-  },
-  {
-    q: "Who was the Viceroy of India during the Revolt of 1857?",
-    options: ["Lord Dalhousie", "Lord Canning", "Lord Ripon", "Lord Curzon"],
-    answer: 1
-  },
-  {
-    q: "The slogan 'Inquilab Zindabad' was popularized by?",
-    options: ["Bhagat Singh", "Hasrat Mohani", "Sardar Patel", "Lala Lajpat Rai"],
-    answer: 1
-  },
-  {
-    q: "Who was the leader of the INA (Indian National Army)?",
-    options: ["Jawaharlal Nehru", "Mahatma Gandhi", "Subhas Chandra Bose", "C. Rajagopalachari"],
-    answer: 2
-  },
-  {
-    q: "Who authored the book 'India Wins Freedom'?",
-    options: ["Jawaharlal Nehru", "Maulana Abul Kalam Azad", "Mahatma Gandhi", "Subhas Chandra Bose"],
-    answer: 1
-  },
-  {
-    q: "Who was the first Indian President of INC?",
-    options: ["Dadabhai Naoroji", "Gopal Krishna Gokhale", "W.C. Bonnerjee", "A.O. Hume"],
-    answer: 2
-  },
-  {
-    q: "Who was the Viceroy during Jallianwala Bagh massacre?",
-    options: ["Lord Irwin", "Lord Curzon", "Lord Chelmsford", "Lord Reading"],
-    answer: 2
-  },
-  {
-    q: "The first session of INC was held in?",
-    options: ["Delhi", "Calcutta", "Madras", "Bombay"],
-    answer: 3
-  },
-  {
-    q: "The Montagu–Chelmsford Reforms were introduced in?",
-    options: ["1909", "1919", "1935", "1947"],
-    answer: 1
-  },
-  {
-    q: "Who was known as the 'Lion of Punjab'?",
-    options: ["Bal Gangadhar Tilak", "Bipin Chandra Pal", "Lala Lajpat Rai", "Bhagat Singh"],
-    answer: 2
-  },
-  {
-    q: "Who founded the Forward Bloc?",
-    options: ["Subhas Chandra Bose", "Jawaharlal Nehru", "Sardar Patel", "Rajendra Prasad"],
-    answer: 0
-  },
-  {
-    q: "Who wrote 'Hind Swaraj'?",
-    options: ["Mahatma Gandhi", "Jawaharlal Nehru", "Bal Gangadhar Tilak", "Rabindranath Tagore"],
-    answer: 0
-  },
-  {
-    q: "The capital of India was shifted from Calcutta to Delhi in?",
-    options: ["1905", "1911", "1920", "1935"],
-    answer: 1
-  },
-  {
-    q: "The Ilbert Bill controversy took place under which Viceroy?",
-    options: ["Lord Curzon", "Lord Ripon", "Lord Lytton", "Lord Chelmsford"],
-    answer: 1
-  },
-  {
-    q: "Who established the All India Trade Union Congress (AITUC)?",
-    options: ["Bal Gangadhar Tilak", "Lala Lajpat Rai", "Sardar Patel", "B.R. Ambedkar"],
-    answer: 1
-  },
-  {
-    q: "Who founded the INA before Subhas Chandra Bose?",
-    options: ["Rash Behari Bose", "Mohan Singh", "Sardar Patel", "Jawaharlal Nehru"],
-    answer: 1
-  },
-  {
-    q: "Who was the first woman President of INC?",
-    options: ["Annie Besant", "Sarojini Naidu", "Vijayalakshmi Pandit", "Sucheta Kripalani"],
-    answer: 0
-  },
-  {
-    q: "Who introduced the Permanent Settlement in Bengal?",
-    options: ["Lord Cornwallis", "Lord Wellesley", "Lord Dalhousie", "Lord Ripon"],
-    answer: 0
-  },
-  {
-    q: "Who founded the Arya Samaj?",
-    options: ["Raja Ram Mohan Roy", "Swami Dayanand Saraswati", "Swami Vivekananda", "Keshab Chandra Sen"],
-    answer: 1
-  },
-  {
-    q: "The Hunter Commission was related to?",
-    options: ["Education Reforms", "Land Revenue", "Police Reforms", "Jallianwala Bagh"],
-    answer: 0
-  },
-  {
-    q: "Who founded the Servants of India Society?",
-    options: ["Bal Gangadhar Tilak", "Gopal Krishna Gokhale", "Dadabhai Naoroji", "Mahatma Gandhi"],
-    answer: 1
-  },
-  {
-    q: "Who established the Ramakrishna Mission?",
-    options: ["Ramakrishna Paramhansa", "Swami Vivekananda", "Keshab Chandra Sen", "Raja Ram Mohan Roy"],
-    answer: 1
-  },
-  {
-    q: "Who led the Santhal Rebellion?",
-    options: ["Tantia Tope", "Sidhu and Kanhu", "Rani Lakshmibai", "Kunwar Singh"],
-    answer: 1
-  },
-  {
-    q: "Who was the last Governor-General of free India?",
-    options: ["Lord Mountbatten", "C. Rajagopalachari", "Rajendra Prasad", "Jawaharlal Nehru"],
-    answer: 1
-  },
-  {
-    q: "Who was called the 'Prince of Patriots'?",
-    options: ["Subhas Chandra Bose", "Jawaharlal Nehru", "Mahatma Gandhi", "Sardar Patel"],
-    answer: 0
-  },
-  {
-    q: "Who introduced the Doctrine of Lapse?",
-    options: ["Lord Dalhousie", "Lord Wellesley", "Lord Canning", "Lord Ripon"],
-    answer: 0
-  },
-  {
-    q: "Who was the first Indian to join the ICS?",
-    options: ["Bal Gangadhar Tilak", "Gopal Krishna Gokhale", "Satyendranath Tagore", "Dadabhai Naoroji"],
-    answer: 2
-  },
-  {
-    q: "Who founded the Brahmo Samaj?",
-    options: ["Raja Ram Mohan Roy", "Swami Vivekananda", "Swami Dayanand Saraswati", "Rabindranath Tagore"],
-    answer: 0
-  },
-  {
-    q: "Who was the first Muslim President of INC?",
-    options: ["Maulana Azad", "Badruddin Tyabji", "Rafi Ahmed Kidwai", "Hakim Ajmal Khan"],
-    answer: 1
-  },
-  {
-    q: "Who was the first Indian woman President of INC?",
-    options: ["Sarojini Naidu", "Annie Besant", "Vijayalakshmi Pandit", "Sucheta Kripalani"],
-    answer: 0
-  },
-  {
-    q: "Who gave the slogan 'Jai Hind'?",
-    options: ["Bhagat Singh", "Mahatma Gandhi", "Subhas Chandra Bose", "Jawaharlal Nehru"],
-    answer: 2
-  },
-  {
-    q: "Who introduced the Subsidiary Alliance?",
-    options: ["Lord Dalhousie", "Lord Cornwallis", "Lord Wellesley", "Lord Ripon"],
-    answer: 2
-  },
-  {
-    q: "Who was the first woman Governor of an Indian state?",
-    options: ["Vijayalakshmi Pandit", "Annie Besant", "Sarojini Naidu", "Sucheta Kripalani"],
-    answer: 2
-  },
-  {
-    q: "The Rowlatt Act was passed in?",
-    options: ["1905", "1917", "1919", "1921"],
-    answer: 2
-  },
-  {
-    q: "Who founded the Prarthana Samaj?",
-    options: ["Atmaram Pandurang", "Raja Ram Mohan Roy", "Swami Dayanand Saraswati", "Keshab Chandra Sen"],
-    answer: 0
-  },
-  {
-    q: "Who founded the Theosophical Society in India?",
-    options: ["Annie Besant", "Madame Blavatsky", "Dayanand Saraswati", "Raja Ram Mohan Roy"],
-    answer: 1
-  },
-  {
-    q: "Who led the Revolt of 1857 in Kanpur?",
-    options: ["Tantia Tope", "Nana Saheb", "Rani Lakshmibai", "Bahadur Shah II"],
-    answer: 1
-  },
-  {
-    q: "Who was the leader of the 1857 revolt in Lucknow?",
-    options: ["Begum Hazrat Mahal", "Kunwar Singh", "Mangal Pandey", "Tantia Tope"],
-    answer: 0
-  },
-  {
-    q: "Who was the founder of Aligarh Movement?",
-    options: ["Syed Ahmed Khan", "Badruddin Tyabji", "Hakim Ajmal Khan", "Maulana Azad"],
-    answer: 0
-  },
-  {
-    q: "Who was the last Mughal emperor of India?",
-    options: ["Akbar II", "Bahadur Shah II", "Aurangzeb", "Shah Alam II"],
-    answer: 1
-  },
-  {
-    q: "Who was the first Indian to demand 'Swaraj' in INC session?",
-    options: ["Dadabhai Naoroji", "Bal Gangadhar Tilak", "Bipin Chandra Pal", "Gopal Krishna Gokhale"],
-    answer: 0
-  },
-  {
-    q: "The Simon Commission was appointed in?",
-    options: ["1919", "1927", "1935", "1942"],
-    answer: 1
-  },
-  {
-    q: "Who gave the slogan 'Do or Die'?",
-    options: ["Mahatma Gandhi", "Bhagat Singh", "Subhas Bose", "Jawaharlal Nehru"],
-    answer: 0
-  },
-  {
-    q: "Who was the first President of independent India?",
-    options: ["C. Rajagopalachari", "Jawaharlal Nehru", "Rajendra Prasad", "Sardar Patel"],
-    answer: 2
-  }
-];
-    let questions = [];
-    while (questions.length < 50) { questions = questions.concat(baseQuestions); }
-    questions.length = 50;
-
-    // Render questions
+    // Render Questions
     const qContainer = document.getElementById("questions");
     questions.forEach((q, i) => {
       const div = document.createElement("div");
@@ -297,7 +96,7 @@ const questions = [
     });
 
     // Timer
-    let time = 60 * 60; // 1 hour in seconds
+    let time = 60 * 60; // 1 hour
     const timerDiv = document.getElementById("timer");
     function updateTimer() {
       const minutes = Math.floor(time / 60);
@@ -307,6 +106,8 @@ const questions = [
       if (time < 0) { submitTest(); }
     }
     setInterval(updateTimer, 1000);
+
+    // Submit & Evaluate
     function submitTest() {
       let score = 0, correct = 0, wrong = 0, unattempted = 0;
 
@@ -317,7 +118,7 @@ const questions = [
             score += 2;
             correct++;
           } else {
-            score -= (2/3); // -0.66
+            score -= (2/3); // negative marking
             wrong++;
           }
         } else {
@@ -325,16 +126,14 @@ const questions = [
         }
       });
 
-      // Save results
       localStorage.setItem("score", JSON.stringify(score));
       localStorage.setItem("total", JSON.stringify(questions.length * 2));
       localStorage.setItem("correct", JSON.stringify(correct));
       localStorage.setItem("wrong", JSON.stringify(wrong));
       localStorage.setItem("unattempted", JSON.stringify(unattempted));
 
-      // Message and redirect
       document.getElementById("message").style.display = "block";
-      setTimeout(() => { window.location.href = "result.html"; }, 1500);
+      setTimeout(() => { window.location.href = "result23.html"; }, 1500);
     }
 
     document.getElementById("submitLink").addEventListener("click", function(e) {
@@ -344,7 +143,3 @@ const questions = [
   </script>
 </body>
 </html>
-
-
-
-
