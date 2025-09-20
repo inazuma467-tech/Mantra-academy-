@@ -23,7 +23,7 @@
 
   <form id="quizForm">
     <div id="questions"></div>
-    <a href="result23.html" id="submitLink" class="btn-submit">Submit Test</a>
+    <a href="result.html" id="submitLink" class="btn-submit">Submit Test</a>
     <p id="message">Answers will be processed automatically</p>
   </form>
 
@@ -133,7 +133,7 @@
       localStorage.setItem("unattempted", JSON.stringify(unattempted));
 
       document.getElementById("message").style.display = "block";
-      setTimeout(() => { window.location.href = "result23.html"; }, 1500);
+      setTimeout(() => { window.location.href = "result.html"; }, 1500);
     }
 
     document.getElementById("submitLink").addEventListener("click", function(e) {
@@ -143,3 +143,4 @@
   </script>
 </body>
 </html>
+
