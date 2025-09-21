@@ -29,59 +29,259 @@
 
   <script>
     // 50 Modern History Questions
-    const questions = [
-      { q: "Who was the founder of the Indian National Congress (INC)?", options: ["Dadabhai Naoroji","Gopal Krishna Gokhale","A.O. Hume","W.C. Bonnerjee"], answer: 2 },
-      { q: "The slogan ‘Swaraj is my birthright and I shall have it’ was given by?", options: ["Lala Lajpat Rai","Bal Gangadhar Tilak","Bipin Chandra Pal","Gopal Krishna Gokhale"], answer: 1 },
-      { q: "Who led the Dandi March in 1930?", options: ["Jawaharlal Nehru","Subhas Chandra Bose","Sardar Patel","Mahatma Gandhi"], answer: 3 },
-      { q: "Who was the first Governor-General of India?", options: ["Lord Wellesley","Lord Dalhousie","Lord William Bentinck","Lord Canning"], answer: 2 },
-      { q: "Who was known as the 'Grand Old Man of India'?", options: ["Bal Gangadhar Tilak","Dadabhai Naoroji","Gopal Krishna Gokhale","Lala Lajpat Rai"], answer: 1 },
-      { q: "The Partition of Bengal took place in?", options: ["1890","1903","1905","1911"], answer: 2 },
-      { q: "Who was the Viceroy of India during the Revolt of 1857?", options: ["Lord Dalhousie","Lord Canning","Lord Ripon","Lord Curzon"], answer: 1 },
-      { q: "The slogan 'Inquilab Zindabad' was popularized by?", options: ["Bhagat Singh","Hasrat Mohani","Sardar Patel","Lala Lajpat Rai"], answer: 1 },
-      { q: "Who was the leader of the INA (Indian National Army)?", options: ["Jawaharlal Nehru","Mahatma Gandhi","Subhas Chandra Bose","C. Rajagopalachari"], answer: 2 },
-      { q: "Who authored the book 'India Wins Freedom'?", options: ["Jawaharlal Nehru","Maulana Abul Kalam Azad","Mahatma Gandhi","Subhas Chandra Bose"], answer: 1 },
-      { q: "Who was the first Indian President of INC?", options: ["Dadabhai Naoroji","Gopal Krishna Gokhale","W.C. Bonnerjee","A.O. Hume"], answer: 2 },
-      { q: "Who was the Viceroy during Jallianwala Bagh massacre?", options: ["Lord Irwin","Lord Curzon","Lord Chelmsford","Lord Reading"], answer: 2 },
-      { q: "The first session of INC was held in?", options: ["Delhi","Calcutta","Madras","Bombay"], answer: 3 },
-      { q: "The Montagu–Chelmsford Reforms were introduced in?", options: ["1909","1919","1935","1947"], answer: 1 },
-      { q: "Who was known as the 'Lion of Punjab'?", options: ["Bal Gangadhar Tilak","Bipin Chandra Pal","Lala Lajpat Rai","Bhagat Singh"], answer: 2 },
-      { q: "Who founded the Forward Bloc?", options: ["Subhas Chandra Bose","Jawaharlal Nehru","Sardar Patel","Rajendra Prasad"], answer: 0 },
-      { q: "Who wrote 'Hind Swaraj'?", options: ["Mahatma Gandhi","Jawaharlal Nehru","Bal Gangadhar Tilak","Rabindranath Tagore"], answer: 0 },
-      { q: "The capital of India was shifted from Calcutta to Delhi in?", options: ["1905","1911","1920","1935"], answer: 1 },
-      { q: "The Ilbert Bill controversy took place under which Viceroy?", options: ["Lord Curzon","Lord Ripon","Lord Lytton","Lord Chelmsford"], answer: 1 },
-      { q: "Who established the All India Trade Union Congress (AITUC)?", options: ["Bal Gangadhar Tilak","Lala Lajpat Rai","Sardar Patel","B.R. Ambedkar"], answer: 1 },
-      { q: "Who founded the INA before Subhas Chandra Bose?", options: ["Rash Behari Bose","Mohan Singh","Sardar Patel","Jawaharlal Nehru"], answer: 1 },
-      { q: "Who was the first woman President of INC?", options: ["Annie Besant","Sarojini Naidu","Vijayalakshmi Pandit","Sucheta Kripalani"], answer: 0 },
-      { q: "Who introduced the Permanent Settlement in Bengal?", options: ["Lord Cornwallis","Lord Wellesley","Lord Dalhousie","Lord Ripon"], answer: 0 },
-      { q: "Who founded the Arya Samaj?", options: ["Raja Ram Mohan Roy","Swami Dayanand Saraswati","Swami Vivekananda","Keshab Chandra Sen"], answer: 1 },
-      { q: "The Hunter Commission was related to?", options: ["Education Reforms","Land Revenue","Police Reforms","Jallianwala Bagh"], answer: 0 },
-      { q: "Who founded the Servants of India Society?", options: ["Bal Gangadhar Tilak","Gopal Krishna Gokhale","Dadabhai Naoroji","Mahatma Gandhi"], answer: 1 },
-      { q: "Who established the Ramakrishna Mission?", options: ["Ramakrishna Paramhansa","Swami Vivekananda","Keshab Chandra Sen","Raja Ram Mohan Roy"], answer: 1 },
-      { q: "Who led the Santhal Rebellion?", options: ["Tantia Tope","Sidhu and Kanhu","Rani Lakshmibai","Kunwar Singh"], answer: 1 },
-      { q: "Who was the last Governor-General of free India?", options: ["Lord Mountbatten","C. Rajagopalachari","Rajendra Prasad","Jawaharlal Nehru"], answer: 1 },
-      { q: "Who was called the 'Prince of Patriots'?", options: ["Subhas Chandra Bose","Jawaharlal Nehru","Mahatma Gandhi","Sardar Patel"], answer: 0 },
-      { q: "Who introduced the Doctrine of Lapse?", options: ["Lord Dalhousie","Lord Wellesley","Lord Canning","Lord Ripon"], answer: 0 },
-      { q: "Who was the first Indian to join the ICS?", options: ["Bal Gangadhar Tilak","Gopal Krishna Gokhale","Satyendranath Tagore","Dadabhai Naoroji"], answer: 2 },
-      { q: "Who founded the Brahmo Samaj?", options: ["Raja Ram Mohan Roy","Swami Vivekananda","Swami Dayanand Saraswati","Rabindranath Tagore"], answer: 0 },
-      { q: "Who was the first Muslim President of INC?", options: ["Maulana Azad","Badruddin Tyabji","Rafi Ahmed Kidwai","Hakim Ajmal Khan"], answer: 1 },
-      { q: "Who was the first Indian woman President of INC?", options: ["Sarojini Naidu","Annie Besant","Vijayalakshmi Pandit","Sucheta Kripalani"], answer: 0 },
-      { q: "Who gave the slogan 'Jai Hind'?", options: ["Bhagat Singh","Mahatma Gandhi","Subhas Chandra Bose","Jawaharlal Nehru"], answer: 2 },
-      { q: "Who introduced the Subsidiary Alliance?", options: ["Lord Dalhousie","Lord Cornwallis","Lord Wellesley","Lord Ripon"], answer: 2 },
-      { q: "Who was the first woman Governor of an Indian state?", options: ["Vijayalakshmi Pandit","Annie Besant","Sarojini Naidu","Sucheta Kripalani"], answer: 2 },
-      { q: "The Rowlatt Act was passed in?", options: ["1905","1917","1919","1921"], answer: 2 },
-      { q: "Who founded the Prarthana Samaj?", options: ["Atmaram Pandurang","Raja Ram Mohan Roy","Swami Dayanand Saraswati","Keshab Chandra Sen"], answer: 0 },
-      { q: "Who founded the Theosophical Society in India?", options: ["Annie Besant","Madame Blavatsky","Dayanand Saraswati","Raja Ram Mohan Roy"], answer: 1 },
-      { q: "Who led the Revolt of 1857 in Kanpur?", options: ["Tantia Tope","Nana Saheb","Rani Lakshmibai","Bahadur Shah II"], answer: 1 },
-      { q: "Who was the leader of the 1857 revolt in Lucknow?", options: ["Begum Hazrat Mahal","Kunwar Singh","Mangal Pandey","Tantia Tope"], answer: 0 },
-      { q: "Who was the founder of Aligarh Movement?", options: ["Syed Ahmed Khan","Badruddin Tyabji","Hakim Ajmal Khan","Maulana Azad"], answer: 0 },
-      { q: "Who was the last Mughal emperor of India?", options: ["Akbar II","Bahadur Shah II","Aurangzeb","Shah Alam II"], answer: 1 },
-      { q: "Who was the first Indian to demand 'Swaraj' in INC session?", options: ["Dadabhai Naoroji","Bal Gangadhar Tilak","Bipin Chandra Pal","Gopal Krishna Gokhale"], answer: 0 },
-      { q: "The Simon Commission was appointed in?", options: ["1919","1927","1935","1942"], answer: 1 },
-      { q: "Who gave the slogan 'Do or Die'?", options: ["Mahatma Gandhi","Bhagat Singh","Subhas Bose","Jawaharlal Nehru"], answer: 0 },
-      { q: "Who was the first President of independent India?", options: ["C. Rajagopalachari","Jawaharlal Nehru","Rajendra Prasad","Sardar Patel"], answer: 2 }
-  
-    ];
-
+    
+      const questions = [
+  {
+    q: "Which is the largest river island in India?",
+    options: ["Sundarbans", "Majuli", "Rameswaram", "Diu"],
+    answer: 1
+  },
+  {
+    q: "The Tropic of Cancer passes through how many Indian states?",
+    options: ["6", "7", "8", "9"],
+    answer: 2
+  },
+  {
+    q: "Which is the southernmost point of India?",
+    options: ["Indira Point", "Kanyakumari", "Rameswaram", "Little Andaman"],
+    answer: 0
+  },
+  {
+    q: "The river Brahmaputra originates from which region?",
+    options: ["Kailash Range", "Himalayan Glacier", "Chema Yungdung Glacier", "Manasarovar"],
+    answer: 2
+  },
+  {
+    q: "Which is the highest peak in India?",
+    options: ["Kanchenjunga", "Nanda Devi", "Mount Everest", "Kamet"],
+    answer: 0
+  },
+  {
+    q: "Which is the largest saltwater lake in India?",
+    options: ["Dal Lake", "Sambhar Lake", "Chilika Lake", "Pulicat Lake"],
+    answer: 2
+  },
+  {
+    q: "Which river is called the 'Sorrow of Bihar'?",
+    options: ["Kosi", "Ganga", "Son", "Gandak"],
+    answer: 0
+  },
+  {
+    q: "The Western Ghats are also known as?",
+    options: ["Sahyadri", "Nilgiris", "Aravalli", "Satpura"],
+    answer: 0
+  },
+  {
+    q: "Which is the largest desert in India?",
+    options: ["Kutch Desert", "Rann of Kutch", "Thar Desert", "Cold Desert of Ladakh"],
+    answer: 2
+  },
+  {
+    q: "Which city is known as the 'Manchester of South India'?",
+    options: ["Coimbatore", "Chennai", "Bengaluru", "Hyderabad"],
+    answer: 0
+  },
+  {
+    q: "Which is the longest river in Peninsular India?",
+    options: ["Godavari", "Krishna", "Mahanadi", "Cauvery"],
+    answer: 0
+  },
+  {
+    q: "Which state has the longest coastline in India?",
+    options: ["Tamil Nadu", "Maharashtra", "Andhra Pradesh", "Gujarat"],
+    answer: 3
+  },
+  {
+    q: "The Keibul Lamjao National Park, the only floating park in the world, is located in?",
+    options: ["Manipur", "Mizoram", "Nagaland", "Tripura"],
+    answer: 0
+  },
+  {
+    q: "Which mountain range separates Europe and Asia?",
+    options: ["Andes", "Ural", "Alps", "Caucasus"],
+    answer: 1
+  },
+  {
+    q: "Which current is responsible for keeping Europe’s climate mild?",
+    options: ["Humboldt Current", "Gulf Stream", "Canary Current", "Oyashio Current"],
+    answer: 1
+  },
+  {
+    q: "The highest plateau in the world is?",
+    options: ["Deccan Plateau", "Tibetan Plateau", "Patagonian Plateau", "Colorado Plateau"],
+    answer: 1
+  },
+  {
+    q: "Which Indian state receives the highest rainfall?",
+    options: ["Arunachal Pradesh", "Meghalaya", "Kerala", "Assam"],
+    answer: 1
+  },
+  {
+    q: "Which river flows through the Rift Valley in India?",
+    options: ["Godavari", "Krishna", "Narmada", "Mahanadi"],
+    answer: 2
+  },
+  {
+    q: "Which glacier is the source of the Ganga river?",
+    options: ["Siachen", "Gangotri", "Yamunotri", "Zemu"],
+    answer: 1
+  },
+  {
+    q: "The Andaman and Nicobar Islands are separated by?",
+    options: ["Ten Degree Channel", "Nine Degree Channel", "Palk Strait", "Eight Degree Channel"],
+    answer: 0
+  },
+  {
+    q: "Which is the smallest state of India by area?",
+    options: ["Sikkim", "Goa", "Tripura", "Manipur"],
+    answer: 1
+  },
+  {
+    q: "Which Indian river is called 'Dakshin Ganga'?",
+    options: ["Cauvery", "Krishna", "Godavari", "Periyar"],
+    answer: 2
+  },
+  {
+    q: "Which Indian state is known as the 'Land of Five Rivers'?",
+    options: ["Punjab", "Haryana", "Rajasthan", "Uttar Pradesh"],
+    answer: 0
+  },
+  {
+    q: "Which pass connects Leh with Srinagar?",
+    options: ["Rohtang Pass", "Banihal Pass", "Zoji La", "Shipki La"],
+    answer: 2
+  },
+  {
+    q: "Which is the only river in India that flows from east to west?",
+    options: ["Mahi", "Narmada", "Tapti", "All of these"],
+    answer: 3
+  },
+  {
+    q: "The Gulf of Mannar is located between?",
+    options: ["India and Sri Lanka", "India and Maldives", "India and Myanmar", "India and Andaman"],
+    answer: 0
+  },
+  {
+    q: "Which soil is ideal for cotton cultivation?",
+    options: ["Alluvial Soil", "Black Soil", "Red Soil", "Laterite Soil"],
+    answer: 1
+  },
+  {
+    q: "Which is the largest freshwater lake in India?",
+    options: ["Dal Lake", "Wular Lake", "Loktak Lake", "Naini Lake"],
+    answer: 1
+  },
+  {
+    q: "Which city is known as the 'Gateway of India'?",
+    options: ["Delhi", "Chennai", "Mumbai", "Kolkata"],
+    answer: 2
+  },
+  {
+    q: "Which is the only active volcano in India?",
+    options: ["Barren Island", "Narcondam", "Deccan Trap", "Nicobar"],
+    answer: 0
+  },
+  {
+    q: "Which Indian river forms the Dhuandhar Falls?",
+    options: ["Narmada", "Tapti", "Mahanadi", "Godavari"],
+    answer: 0
+  },
+  {
+    q: "Which river forms the largest delta in the world?",
+    options: ["Amazon", "Ganga-Brahmaputra", "Niger", "Mississippi"],
+    answer: 1
+  },
+  {
+    q: "Which Indian city is called the 'Silicon Valley of India'?",
+    options: ["Hyderabad", "Pune", "Bengaluru", "Chennai"],
+    answer: 2
+  },
+  {
+    q: "Which mountain pass connects India with China in Arunachal Pradesh?",
+    options: ["Nathu La", "Bomdila Pass", "Jelep La", "Se La"],
+    answer: 3
+  },
+  {
+    q: "Which ocean is the warmest in the world?",
+    options: ["Pacific Ocean", "Atlantic Ocean", "Indian Ocean", "Arctic Ocean"],
+    answer: 2
+  },
+  {
+    q: "Which river is called the lifeline of Egypt?",
+    options: ["Nile", "Amazon", "Tigris", "Euphrates"],
+    answer: 0
+  },
+  {
+    q: "Which Indian state is known as the 'Spice Garden of India'?",
+    options: ["Kerala", "Karnataka", "Goa", "Assam"],
+    answer: 0
+  },
+  {
+    q: "Which is the largest continent in the world?",
+    options: ["Africa", "Asia", "North America", "Europe"],
+    answer: 1
+  },
+  {
+    q: "Which strait separates India and Sri Lanka?",
+    options: ["Malacca Strait", "Palk Strait", "Hormuz Strait", "Bering Strait"],
+    answer: 1
+  },
+  {
+    q: "Which is the largest glacier in India?",
+    options: ["Gangotri", "Siachen", "Zemu", "Dokriani"],
+    answer: 1
+  },
+  {
+    q: "Which latitude passes through the middle of India?",
+    options: ["Equator", "Tropic of Cancer", "Tropic of Capricorn", "Arctic Circle"],
+    answer: 1
+  },
+  {
+    q: "Which city is known as the 'Pink City of India'?",
+    options: ["Jaipur", "Jodhpur", "Udaipur", "Bikaner"],
+    answer: 0
+  },
+  {
+    q: "Which sea separates Africa from Europe?",
+    options: ["Red Sea", "Mediterranean Sea", "Black Sea", "Caspian Sea"],
+    answer: 1
+  },
+  {
+    q: "Which state in India has no railway station?",
+    options: ["Sikkim", "Nagaland", "Meghalaya", "Mizoram"],
+    answer: 0
+  },
+  {
+    q: "Which river is known as 'Tsangpo' in Tibet?",
+    options: ["Indus", "Brahmaputra", "Ganga", "Yamuna"],
+    answer: 1
+  },
+  {
+    q: "Which is the largest peninsular river of India?",
+    options: ["Godavari", "Krishna", "Mahanadi", "Cauvery"],
+    answer: 0
+  },
+  {
+    q: "Which plateau is rich in coal deposits in India?",
+    options: ["Deccan Plateau", "Chhota Nagpur Plateau", "Malwa Plateau", "Meghalaya Plateau"],
+    answer: 1
+  },
+  {
+    q: "Which city is known as the 'Tea Capital of India'?",
+    options: ["Darjeeling", "Dibrugarh", "Guwahati", "Shillong"],
+    answer: 1
+  },
+  {
+    q: "Which strait connects the Persian Gulf with the Arabian Sea?",
+    options: ["Hormuz Strait", "Bab-el-Mandeb", "Malacca Strait", "Bosporus Strait"],
+    answer: 0
+  },
+  {
+    q: "Which is the deepest ocean trench in the world?",
+    options: ["Java Trench", "Tonga Trench", "Puerto Rico Trench", "Mariana Trench"],
+    answer: 3
+  }
+];
     // Render Questions
     const qContainer = document.getElementById("questions");
     questions.forEach((q, i) => {
@@ -143,4 +343,5 @@
   </script>
 </body>
 </html>
+
 
